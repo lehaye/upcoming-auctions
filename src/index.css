@@ -1,0 +1,64 @@
+/* ---------------------------------------------------------------------------
+   Fonts
+   ---------------------------------------------------------------------------
+   ABC Arizona is licensed — the .woff2 files are NOT committed to this repo.
+   Drop them into /public/fonts using the filenames below and these rules
+   resolve. Until then the stacks fall back to the system serif / sans-serif,
+   so the layout is reviewable but the type will not be.
+
+   The family names below (ABCArizonaSerif / ABCArizonaSans) match the fallback
+   in tokens.json -> typography.fontFamily, so no token change is needed.
+--------------------------------------------------------------------------- */
+
+@font-face {
+  font-family: "ABCArizonaSerif";
+  src: url("../fonts/ABCArizonaSerif-Light.woff2") format("woff2");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "ABCArizonaSans";
+  src: url("../fonts/ABCArizonaSans-Light.woff2") format("woff2");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "ABCArizonaSans";
+  src: url("../fonts/ABCArizonaSans-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "ABCArizonaSans";
+  src: url("../fonts/ABCArizonaSans-Medium.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    @apply bg-white font-arizona-sans text-body text-black;
+  }
+
+  /* DESIGN_PRINCIPLES §3.2: dates and countdowns use tabular figures so
+     digits do not jitter between states. */
+  time,
+  [data-numeric] {
+    font-variant-numeric: tabular-nums;
+  }
+}
